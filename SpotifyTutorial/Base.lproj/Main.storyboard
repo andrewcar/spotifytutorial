@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +31,7 @@
                                     <constraint firstAttribute="height" constant="50" id="CvP-KC-TO5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="LOG IN TO SPOTIFY">
+                                <state key="normal" title="Log in to Spotify">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -70,12 +71,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="mqV-tp-bV7">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="mqV-tp-bV7">
+                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mqV-tp-bV7" id="SoJ-Ky-ty7">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N0S-fz-hEw">
+                                            <rect key="frame" x="16" y="11" width="78" height="78"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="N0S-fz-hEw" secondAttribute="height" multiplier="1:1" id="h1A-Da-u4A"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Sz-vv-KMw">
+                                            <rect key="frame" x="102" y="39" width="257" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="N0S-fz-hEw" firstAttribute="leading" secondItem="SoJ-Ky-ty7" secondAttribute="leading" constant="16" id="SMS-uF-4QY"/>
+                                        <constraint firstItem="N0S-fz-hEw" firstAttribute="top" secondItem="SoJ-Ky-ty7" secondAttribute="top" constant="11" id="UnW-G0-ZRn"/>
+                                        <constraint firstAttribute="trailing" secondItem="4Sz-vv-KMw" secondAttribute="trailing" constant="16" id="VBl-9D-agw"/>
+                                        <constraint firstItem="4Sz-vv-KMw" firstAttribute="leading" secondItem="N0S-fz-hEw" secondAttribute="trailing" constant="8" id="YW1-MJ-AKv"/>
+                                        <constraint firstAttribute="bottom" secondItem="N0S-fz-hEw" secondAttribute="bottom" constant="10.5" id="cck-t5-2HO"/>
+                                        <constraint firstItem="4Sz-vv-KMw" firstAttribute="centerY" secondItem="SoJ-Ky-ty7" secondAttribute="centerY" id="grf-OF-SZz"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -87,7 +110,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9e4-qD-IAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-129" y="144"/>
+            <point key="canvasLocation" x="-130.40000000000001" y="143.47826086956522"/>
         </scene>
     </scenes>
 </document>
