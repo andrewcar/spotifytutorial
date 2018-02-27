@@ -29,11 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             auth.handleAuthCallback(withTriggeredAuthURL: url, callback: { (error, session) in
                 if error != nil { print("Error Handling Auth Callback.") }
                 
-                let userDefaults = UserDefaults.standard
                 let sessionData = NSKeyedArchiver.archivedData(withRootObject: session as Any)
                 
-                userDefaults.set(sessionData, forKey: "SpotifySession")
-                userDefaults.synchronize()
+                UserDefaults.standard.set(sessionData, forKey: "SpotifySession")
+                UserDefaults.standard.synchronize()
                 
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessfull"), object: nil)
             })

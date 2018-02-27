@@ -12,7 +12,7 @@ import Spotify
 
 class PlaylistController: UITableViewController {
 
-    var searchURL = "https://api.spotify.com/v1/artists"
+    var searchURL = "Https://api.spotify.com/v1/search?q=Future&type=track"
     typealias JSONStandard = [String: AnyObject]
     var session: SPTSession!
     
@@ -28,15 +28,22 @@ class PlaylistController: UITableViewController {
                           parameters: ["ids":"0oSGxfWSnnOXhD2fKuz2Gy"],
                           encoding: URLEncoding.default,
                           headers: ["Authorization": "Bearer " + self.session.accessToken]).responseJSON { (response) in
-                            //print(response)﻿
                             self.parseData(JSONData: response.data!)
         }
     }
 
     func parseData(JSONData: Data) {
         do {
-            var parsedJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as? JSONStandard
-            print(parsedJSON)
+            var parsedJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! JSONStandard
+            if let tracks = parsedJSON["tracks"] as? JSONStandard {
+                if let items = tracks["items"] as? [JSONStandard] {
+                    for i in 0..<items.count {
+                        let item = items[i]
+//                        print(item)
+                        
+                    }
+                }
+            }
         } catch {
             print("Error parsing JSON: \(error.localizedDescription)")
         }

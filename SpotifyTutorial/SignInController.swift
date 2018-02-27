@@ -31,9 +31,13 @@ class SignInController: UIViewController {
         setupSpotify()
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(SignInController.updateAfterFirstLogin),
+                                               selector: #selector(SignInController.updateAfterLogin),
                                                name: .connectionCompleted,
                                                object: nil)
+        
+        if UserDefaults.standard.data(forKey: "SpotifySession") != nil {
+            updateAfterLogin()
+        }
     }
     
     @IBAction func logIn(_ sender: Any) {
@@ -52,15 +56,14 @@ class SignInController: UIViewController {
         }
     }
     
-    @objc func updateAfterFirstLogin (_ notification: Notification) {
-        print("first login called")
-        if let sessionObj:AnyObject = UserDefaults().object(forKey: "SpotifySession") as AnyObject? {
-            
+    @objc func updateAfterLogin() {
+        if let sessionObj: AnyObject = UserDefaults().object(forKey: "SpotifySession") as AnyObject? {
             let sessionDataObj = sessionObj as! Data
             let firstTimeSession = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj) as! SPTSession
-            
             self.session = firstTimeSession
-            performSegue(withIdentifier: "PlaylistControllerSegue", sender: self)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "PlaylistControllerSegue", sender: self)
+            }
         }
     }
     
