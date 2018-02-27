@@ -13,6 +13,7 @@ import Spotify
 class PlaylistController: UITableViewController {
 
     var searchURL = "Https://api.spotify.com/v1/search?q=Future&type=track"
+    var names = [String]()
     typealias JSONStandard = [String: AnyObject]
     var session: SPTSession!
     
@@ -39,14 +40,25 @@ class PlaylistController: UITableViewController {
                 if let items = tracks["items"] as? [JSONStandard] {
                     for i in 0..<items.count {
                         let item = items[i]
-//                        print(item)
-                        
+                        let name = item["name"] as! String
+                        names.append(name)
+                        tableView.reloadData()
                     }
                 }
             }
         } catch {
             print("Error parsing JSON: \(error.localizedDescription)")
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return names.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        cell?.textLabel?.text = names[indexPath.row]
+        return cell!
     }
 }
 
