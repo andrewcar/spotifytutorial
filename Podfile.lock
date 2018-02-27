@@ -1,12 +1,21 @@
 PODS:
   - Alamofire (4.6.0)
+  - Spotify-iOS-SDK (0.25.0):
+    - Spotify-iOS-SDK/Authentication (= 0.25.0)
+    - Spotify-iOS-SDK/Metadata (= 0.25.0)
+    - Spotify-iOS-SDK/Playback (= 0.25.0)
+  - Spotify-iOS-SDK/Authentication (0.25.0)
+  - Spotify-iOS-SDK/Metadata (0.25.0)
+  - Spotify-iOS-SDK/Playback (0.25.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.6)
+  - Spotify-iOS-SDK
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Spotify-iOS-SDK: 58d4092b225578623dd17029f3c7e7042ac3ef6e
 
-PODFILE CHECKSUM: c1673a066df1e5525ec3907664556372002f1f34
+PODFILE CHECKSUM: a361c7f923b58dd89640d02beb3e61ac351ce336
 
 COCOAPODS: 1.4.0

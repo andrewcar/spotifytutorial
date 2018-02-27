@@ -7,7 +7,7 @@ target 'SpotifyTutorial' do
 
   # Pods for SpotifyTutorial
 pod 'Alamofire', '~> 4.6'
-
+pod 'Spotify-iOS-SDK'
 
   target 'SpotifyTutorialTests' do
     inherit! :search_paths
