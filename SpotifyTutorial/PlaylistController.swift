@@ -9,13 +9,17 @@
 import UIKit
 import Alamofire
 import Spotify
+import AVFoundation
+
+var player = AVAudioPlayer()
 
 struct Post {
     let image: UIImage!
     let name: String!
+    let songURI: String!
 }
 
-class PlaylistController: UITableViewController {
+class PlaylistController: UITableViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate {
 
     var searchURL = "Https://api.spotify.com/v1/search?q=Future&type=track"
     var posts = [Post]()
@@ -26,6 +30,7 @@ class PlaylistController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         getSpotifyCatalogWith(url: searchURL)
+        setupPlayer()
     }
     
     func getSpotifyCatalogWith(url: String) {
@@ -45,23 +50,45 @@ class PlaylistController: UITableViewController {
                 if let items = tracks["items"] as? [JSONStandard] {
                     for i in 0..<items.count {
                         let item = items[i]
+                        
+                        // name
                         let name = item["name"] as! String
+                        
+                        // album image
                         if let album = item["album"] as? JSONStandard {
                             if let images = album["images"] as? [JSONStandard] {
                                 let imageJSON = images[0]
                                 let imageURL = URL(string: imageJSON["url"] as! String)
                                 let imageData = try? Data(contentsOf: imageURL!)
                                 let image = UIImage(data: imageData!)
-                                posts.append(Post.init(image: image, name: name))
-                                tableView.reloadData()
+                                
+                                // song
+                                let songURI = item["uri"] as! String
+                                
+                                posts.append(Post.init(image: image, name: name, songURI: songURI))
                             }
                         }
                     }
+                    tableView.reloadData()
                 }
             }
         } catch {
             print("Error parsing JSON: \(error.localizedDescription)")
         }
+    }
+    
+    func setupPlayer() {
+        if Source.si.spotifyPlayer == nil {
+            Source.si.spotifyPlayer = SPTAudioStreamingController.sharedInstance()!
+        }
+        Source.si.spotifyPlayer.playbackDelegate = self
+        Source.si.spotifyPlayer.delegate = self
+        do {
+            try Source.si.spotifyPlayer.start(withClientId: Source.si.auth.clientID)
+        } catch {
+            print(error.localizedDescription)
+        }
+        Source.si.spotifyPlayer.login(withAccessToken: Source.si.session.accessToken)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,6 +116,19 @@ class PlaylistController: UITableViewController {
         let vc = segue.destination as! AudioController
         vc.albumImage = posts[indexPath!].image
         vc.songTitle = posts[indexPath!].name
+        vc.songURI = posts[indexPath!].songURI
+    }
+    
+    func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didStartPlayingTrack trackUri: String!) {
+        print("started playing track: \(trackUri)")
+    }
+    
+    func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
+        print("audio streaming did login")
+    }
+    
+    func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChangePlaybackStatus isPlaying: Bool) {
+        print("audio streaming did change playback status and isPlaying = \(isPlaying)")
     }
 }
 

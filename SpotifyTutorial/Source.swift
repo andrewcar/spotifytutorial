@@ -16,4 +16,5 @@ class Source: NSObject {
     
     var auth = SPTAuth.defaultInstance()!
     var session: SPTSession!
+    var spotifyPlayer: SPTAudioStreamingController!
 }
