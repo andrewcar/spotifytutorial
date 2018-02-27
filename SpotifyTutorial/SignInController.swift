@@ -11,8 +11,6 @@ import Spotify
 
 class SignInController: UIViewController {
     
-    var auth = SPTAuth.defaultInstance()!
-    var session: SPTSession!
     var player: SPTAudioStreamingController?
     var loginURL: URL?
     
@@ -42,7 +40,7 @@ class SignInController: UIViewController {
     
     @IBAction func logIn(_ sender: Any) {
         if UIApplication.shared.canOpenURL(loginURL!) {
-            if auth.canHandle(auth.redirectURL) {
+            if Source.si.auth.canHandle(Source.si.auth.redirectURL) {
                 UIApplication.shared.open(loginURL!, options: [:], completionHandler: { (success) in
                 })
             }
@@ -52,7 +50,7 @@ class SignInController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlaylistControllerSegue" {
             let playlistController = segue.destination as? PlaylistController
-            playlistController?.session = session
+            playlistController?.session = Source.si.session
         }
     }
     
@@ -60,7 +58,7 @@ class SignInController: UIViewController {
         if let sessionObj: AnyObject = UserDefaults().object(forKey: "SpotifySession") as AnyObject? {
             let sessionDataObj = sessionObj as! Data
             let firstTimeSession = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj) as! SPTSession
-            self.session = firstTimeSession
+            Source.si.session = firstTimeSession
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "PlaylistControllerSegue", sender: self)
             }

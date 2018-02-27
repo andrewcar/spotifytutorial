@@ -16,6 +16,8 @@
 		494BBE6B203F672200C66888 /* SpotifyTutorialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494BBE6A203F672200C66888 /* SpotifyTutorialTests.swift */; };
 		494BBE76203F672200C66888 /* SpotifyTutorialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494BBE75203F672200C66888 /* SpotifyTutorialUITests.swift */; };
 		499995112044D58E00940B43 /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499995102044D58E00940B43 /* SignInController.swift */; };
+		49DC58132045D7C00048EEDC /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC58122045D7C00048EEDC /* AudioController.swift */; };
+		49DC58152045DFF10048EEDC /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC58142045DFF10048EEDC /* Source.swift */; };
 		5FC59568AEA4C266E6AA7946 /* Pods_SpotifyTutorialUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36B7D21CF852FB009118731 /* Pods_SpotifyTutorialUITests.framework */; };
 		7909C66F086E4ABCAD1449E3 /* Pods_SpotifyTutorialTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186C41E12060DD1774023EFC /* Pods_SpotifyTutorialTests.framework */; };
 		87F6ACF05A7427D3B97EA8F7 /* Pods_SpotifyTutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98F1C86728181A31C61EA8DC /* Pods_SpotifyTutorial.framework */; };
@@ -56,6 +58,8 @@
 		494BBE75203F672200C66888 /* SpotifyTutorialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyTutorialUITests.swift; sourceTree = "<group>"; };
 		494BBE77203F672200C66888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		499995102044D58E00940B43 /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
+		49DC58122045D7C00048EEDC /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
+		49DC58142045DFF10048EEDC /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		72715370037F48488E3B57CC /* Pods-SpotifyTutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyTutorial.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifyTutorial/Pods-SpotifyTutorial.release.xcconfig"; sourceTree = "<group>"; };
 		9392F5C84731CA2DBC35EB6B /* Pods-SpotifyTutorialTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyTutorialTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifyTutorialTests/Pods-SpotifyTutorialTests.release.xcconfig"; sourceTree = "<group>"; };
 		98F1C86728181A31C61EA8DC /* Pods_SpotifyTutorial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotifyTutorial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +125,8 @@
 				494BBE52203F672200C66888 /* AppDelegate.swift */,
 				499995102044D58E00940B43 /* SignInController.swift */,
 				494BBE54203F672200C66888 /* PlaylistController.swift */,
+				49DC58122045D7C00048EEDC /* AudioController.swift */,
+				49DC58142045DFF10048EEDC /* Source.swift */,
 				494BBE56203F672200C66888 /* Main.storyboard */,
 				494BBE5C203F672200C66888 /* Assets.xcassets */,
 				494BBE5E203F672200C66888 /* LaunchScreen.storyboard */,
@@ -466,7 +472,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49DC58132045D7C00048EEDC /* AudioController.swift in Sources */,
 				494BBE5B203F672200C66888 /* SpotifyTutorial.xcdatamodeld in Sources */,
+				49DC58152045DFF10048EEDC /* Source.swift in Sources */,
 				499995112044D58E00940B43 /* SignInController.swift in Sources */,
 				494BBE55203F672200C66888 /* PlaylistController.swift in Sources */,
 				494BBE53203F672200C66888 /* AppDelegate.swift in Sources */,

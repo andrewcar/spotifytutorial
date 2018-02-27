@@ -33,7 +33,7 @@ class PlaylistController: UITableViewController {
                           method: .get,
                           parameters: ["ids":"0oSGxfWSnnOXhD2fKuz2Gy"],
                           encoding: URLEncoding.default,
-                          headers: ["Authorization": "Bearer " + self.session.accessToken]).responseJSON { (response) in
+                          headers: ["Authorization": "Bearer " + Source.si.session.accessToken]).responseJSON { (response) in
                             self.parseData(JSONData: response.data!)
         }
     }
@@ -82,6 +82,13 @@ class PlaylistController: UITableViewController {
         label.text = posts[indexPath.row].name
         
         return cell!
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let indexPath = tableView.indexPathForSelectedRow?.row
+        let vc = segue.destination as! AudioController
+        vc.albumImage = posts[indexPath!].image
+        vc.songTitle = posts[indexPath!].name
     }
 }
 
