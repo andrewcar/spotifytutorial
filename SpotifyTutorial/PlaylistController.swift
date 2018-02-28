@@ -118,17 +118,5 @@ class PlaylistController: UITableViewController, SPTAudioStreamingPlaybackDelega
         vc.songTitle = posts[indexPath!].name
         vc.songURI = posts[indexPath!].songURI
     }
-    
-    func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didStartPlayingTrack trackUri: String!) {
-        print("started playing track: \(trackUri)")
-    }
-    
-    func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
-        print("audio streaming did login")
-    }
-    
-    func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChangePlaybackStatus isPlaying: Bool) {
-        print("audio streaming did change playback status and isPlaying = \(isPlaying)")
-    }
 }
 

@@ -151,10 +151,20 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lu9-Cw-y4Z">
+                                            <rect key="frame" x="169" y="487" width="36" height="51"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                            <state key="normal" title="🎶"/>
+                                            <connections>
+                                                <action selector="playPause:" destination="wcT-3t-sEh" eventType="touchUpInside" id="sqg-Yb-Qvc"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="lu9-Cw-y4Z" firstAttribute="centerX" secondItem="qir-Ku-aBv" secondAttribute="centerX" id="PAO-If-qvD"/>
                                         <constraint firstItem="4R1-DB-Oor" firstAttribute="leading" secondItem="qir-Ku-aBv" secondAttribute="leading" constant="67" id="PHK-6r-jTf"/>
                                         <constraint firstItem="4R1-DB-Oor" firstAttribute="top" secondItem="v1O-9d-aQ4" secondAttribute="bottom" constant="8" id="WKg-DU-WMd"/>
+                                        <constraint firstItem="lu9-Cw-y4Z" firstAttribute="top" secondItem="4R1-DB-Oor" secondAttribute="bottom" constant="50" id="eCc-AP-h2b"/>
                                         <constraint firstItem="v1O-9d-aQ4" firstAttribute="top" secondItem="qir-Ku-aBv" secondAttribute="top" constant="139" id="fWi-zD-I27"/>
                                         <constraint firstItem="v1O-9d-aQ4" firstAttribute="leading" secondItem="qir-Ku-aBv" secondAttribute="leading" constant="67" id="hgT-s6-kG1"/>
                                         <constraint firstAttribute="trailing" secondItem="4R1-DB-Oor" secondAttribute="trailing" constant="68" id="loC-cw-9bR"/>
@@ -180,6 +190,7 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="O4a-vy-dC9" id="1I9-Qe-ygc"/>
                         <outlet property="mainImageView" destination="v1O-9d-aQ4" id="OOi-we-Glr"/>
+                        <outlet property="playPauseButton" destination="lu9-Cw-y4Z" id="HqT-Dc-Mxl"/>
                         <outlet property="songTitleLabel" destination="4R1-DB-Oor" id="EZZ-nt-CdG"/>
                     </connections>
                 </viewController>

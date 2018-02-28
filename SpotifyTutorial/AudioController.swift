@@ -18,7 +18,8 @@ class AudioController: UIViewController {
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var mainImageView: UIImageView!
     @IBOutlet var songTitleLabel: UILabel!
-        
+    @IBOutlet var playPauseButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,12 +31,20 @@ class AudioController: UIViewController {
     
     func playSongWith(uri: String) {
         Source.si.spotifyPlayer.playSpotifyURI(songURI, startingWith: 0, startingWithPosition: 0) { (error) in
-            print("playSpotifyURI")
             if error != nil {
                 print("Error: \(error!.localizedDescription)")
-            } else {
-                print("no errors baby")
             }
         }
     }
+    
+    @IBAction func playPause(_ sender: UIButton) {
+        if Source.si.spotifyPlayer.playbackState.isPlaying {
+            Source.si.spotifyPlayer.setIsPlaying(false, callback: nil)
+            playPauseButton.setTitle("🎶", for: .normal)
+        } else {
+            Source.si.spotifyPlayer.setIsPlaying(true, callback: nil)
+            playPauseButton.setTitle("🤭", for: .normal)
+        }
+    }
+    
 }
