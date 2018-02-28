@@ -38,12 +38,14 @@ class AudioController: UIViewController {
     }
     
     @IBAction func playPause(_ sender: UIButton) {
-        if Source.si.spotifyPlayer.playbackState.isPlaying {
-            Source.si.spotifyPlayer.setIsPlaying(false, callback: nil)
-            playPauseButton.setTitle("🎶", for: .normal)
-        } else {
-            Source.si.spotifyPlayer.setIsPlaying(true, callback: nil)
-            playPauseButton.setTitle("🤭", for: .normal)
+        if Source.si.spotifyPlayer.playbackState != nil {
+            if Source.si.spotifyPlayer.playbackState.isPlaying {
+                Source.si.spotifyPlayer.setIsPlaying(false, callback: nil)
+                playPauseButton.setTitle("🎶", for: .normal)
+            } else {
+                Source.si.spotifyPlayer.setIsPlaying(true, callback: nil)
+                playPauseButton.setTitle("🤭", for: .normal)
+            }
         }
     }
     
