@@ -19,18 +19,19 @@ struct Post {
     let songURI: String!
 }
 
-class PlaylistController: UITableViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate {
+class PlaylistController: UITableViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate, UISearchBarDelegate {
 
-    var searchURL = "Https://api.spotify.com/v1/search?q=Future&type=track"
+    @IBOutlet var searchBar: UISearchBar!
+    var searchURL = String()
     var posts = [Post]()
     typealias JSONStandard = [String: AnyObject]
     var session: SPTSession!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        getSpotifyCatalogWith(url: searchURL)
         setupPlayer()
+        searchBar.delegate = self
     }
     
     func getSpotifyCatalogWith(url: String) {
@@ -89,6 +90,15 @@ class PlaylistController: UITableViewController, SPTAudioStreamingPlaybackDelega
             print(error.localizedDescription)
         }
         Source.si.spotifyPlayer.login(withAccessToken: Source.si.session.accessToken)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let keywords = searchBar.text {
+            let finalKeywords = keywords.replacingOccurrences(of: " ", with: "+")
+            searchURL = "https://api.spotify.com/v1/search?q=\(finalKeywords)&type=track"
+            getSpotifyCatalogWith(url: searchURL)
+            searchBar.resignFirstResponder()
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
