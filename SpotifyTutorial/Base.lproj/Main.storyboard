@@ -154,7 +154,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lu9-Cw-y4Z">
                                             <rect key="frame" x="169" y="487" width="36" height="51"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                            <state key="normal" title="🎶"/>
+                                            <state key="normal" title="🤭"/>
                                             <connections>
                                                 <action selector="playPause:" destination="wcT-3t-sEh" eventType="touchUpInside" id="sqg-Yb-Qvc"/>
                                             </connections>
